@@ -1,8 +1,6 @@
-import React, { useCallback, useState } from 'react';
-
+import React from 'react'
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
-import { computeHeadingLevel } from '@testing-library/react';
 
 function PhotoFavButton(props) {
   const {heart, switchHeart} = props;
@@ -16,7 +14,7 @@ function PhotoFavButton(props) {
     <div className="photo-list__fav-icon" onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
         {heart === 'unlike' && <FavIcon />}
-        {heart === 'like' && <FavIcon />}
+        {heart === 'like' && <FavIcon selected={heart}/>}
       </div>
     </div>
   );

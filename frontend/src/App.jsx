@@ -18,9 +18,9 @@ const sampleDataForPhotoListItem = {
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [heart, setHeart] = useState("like");
+  const [heart, setHeart] = useState("unlike");
   const switchHeart = () => {
-    setHeart(heart === "like" ? "unlike" : "like");
+    setHeart(prevHeart => prevHeart === 'like' ? 'unlike' : 'like')
   };
 
   const photos = Array.from({ length: 3 }, (_, index) => (
