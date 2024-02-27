@@ -57,7 +57,9 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
+const PhotoList = (props) => {
+  
+  const { heart, switchHeart, photo } = props;
 
   const photos = sampleDataForPhotoList.map((photo, index) => (
     <PhotoListItem
