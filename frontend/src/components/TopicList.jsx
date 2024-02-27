@@ -6,7 +6,7 @@ import TopicListItem from "./TopicListItem";
 const TopicList = (props) => {
   const topics = props.topicListData.map((topic) => (
     <TopicListItem 
-      title={topic.title}
+      label={topic.title}
       key={topic.id}
       />
   ));
