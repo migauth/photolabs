@@ -2,8 +2,8 @@ import React from "react";
 import { useState } from "react";
 import "./App.scss";
 import PhotoList from "components/PhotoList";
-import TopicList from "components/TopicList";
 import sampleDataForTopicList from "data/sampleData"
+import TopNavigationBar from "components/TopNavigationBar";
 
 const prepareTopcsData = (topicsData) => {
   return Object.values(topicsData);
@@ -18,8 +18,9 @@ const App = () => {
 
   const topicListData = prepareTopcsData(sampleDataForTopicList);
 
+
   return <div className="App">
-    <TopicList topicListData={topicListData}/>
+    <TopNavigationBar topicListData={topicListData}/>
     <PhotoList switchHeart={switchHeart}/>
     </div>;
 };
