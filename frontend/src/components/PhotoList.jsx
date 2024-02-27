@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../styles/PhotoList.scss";
+import PhotoListItem from "./PhotoListItem";
 
 const sampleDataForPhotoList = [
   {
@@ -56,10 +57,20 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
+const PhotoList = (props) => {
+
+  const photos = Array.from({ length: 3 }, (_, index) => (
+    <PhotoListItem
+      heart={heart}
+      switchHeart={switchHeart}
+      photo={sampleDataForPhotoList}
+      key={index}
+    />
+  ));
+
   return (
     <ul className="photo-list">
-      {/* Insert React */}
+      {photos}
     </ul>
   );
 };
