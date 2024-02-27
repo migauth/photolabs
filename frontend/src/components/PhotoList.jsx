@@ -57,13 +57,13 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = (props) => {
+const PhotoList = () => {
 
-  const photos = Array.from({ length: 3 }, (_, index) => (
+  const photos = sampleDataForPhotoList.map((photo, index) => (
     <PhotoListItem
       heart={heart}
       switchHeart={switchHeart}
-      photo={sampleDataForPhotoList}
+      photo={photo}
       key={index}
     />
   ));
