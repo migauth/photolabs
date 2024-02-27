@@ -1,10 +1,13 @@
 import React from "react";
-import { useReducer, useState } from "react";
-
-import PhotoListItem from "./components/PhotoListItem";
+import { useState } from "react";
 import "./App.scss";
-import PhotoFavButton from "components/PhotoFavButton";
 import PhotoList from "components/PhotoList";
+import TopicList from "components/TopicList";
+import sampleDataForTopicList from "data/sampleData"
+
+const prepareTopcsData = (topicsData) => {
+  return Object.values(topicsData);
+}
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
@@ -13,8 +16,11 @@ const App = () => {
     setHeart((prevHeart) => (prevHeart === "like" ? "unlike" : "like"));
   };
 
+  const topicListData = prepareTopcsData(sampleDataForTopicList);
+
   return <div className="App">
-    <PhotoList />
+    <TopicList topicListData={topicListData}/>
+    <PhotoList switchHeart={switchHeart}/>
     </div>;
 };
 
