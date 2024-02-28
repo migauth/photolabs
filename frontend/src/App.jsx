@@ -4,12 +4,9 @@ import "./App.scss";
 import sampleDataForTopicList from "./data/sampleData";
 import HomeRoute from "./components/HomeRoute";
 
-const prepareTopcsData = (topicsData) => {
-  return Object.values(topicsData);
-};
-
-console.log("sampleDataForTopicList:", sampleDataForTopicList);
-console.log("prepare", prepareTopcsData(sampleDataForTopicList));
+// const prepareTopcsData = (topicsData) => {
+//   return Object.values(topicsData);
+// };
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
@@ -23,7 +20,8 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        topicListData={prepareTopcsData(sampleDataForTopicList)}
+        topicListData={sampleDataForTopicList}
+        heart={heart}
         switchHeart={switchHeart}
       />
     </div>
