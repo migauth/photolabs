@@ -1,5 +1,5 @@
 import React from "react";
-import TopNavigationBar from "./TopNavigationBar";
+import TopNavigation from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
 
 const prepareTopicsData = (topicsData) => {
@@ -12,7 +12,7 @@ const HomeRoute = ({ topicListData, switchHeart }) => {
   
   return (
     <div>
-      <TopNavigationBar topicListData={topicListData}/>
+      <TopNavigation topicListData={topicListData}/>
       <PhotoList switchHeart={switchHeart}/>
     </div>
   );

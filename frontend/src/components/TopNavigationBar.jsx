@@ -8,7 +8,7 @@ import FavBadge from './FavBadge';
 
 
 
-const TopNavigationBar = (props) => {
+const TopNavigation = (props) => {
   console.log("props.topicListData:", props.topicListData);
 
   return (
@@ -20,4 +20,4 @@ const TopNavigationBar = (props) => {
   )
 }
 
-export default TopNavigationBar;
+export default TopNavigation;
