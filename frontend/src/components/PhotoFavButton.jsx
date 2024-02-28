@@ -3,11 +3,12 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const {heart, switchHeart} = props;
+  const { heart, switchHeart, addFavourite } = props;
 
   const handleClick = () => {
-    console.log(heart);
     switchHeart();
+    addFavourite(1);
+    console.log(heart);
   }
 
   return (

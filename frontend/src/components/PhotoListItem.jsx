@@ -5,11 +5,11 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
 
   /* Insert React */
-  const { heart, switchHeart, photo } = props;
+  const { heart, switchHeart, addFavourite, photo } = props;
 
   return (
     <div className="photo-list__item">
-      <PhotoFavButton heart={heart} switchHeart={switchHeart}/>
+      <PhotoFavButton heart={heart} switchHeart={switchHeart} addFavourite={addFavourite}/>
       <img className="photo-list__image" src={props.photo.urls.full} alt="" />
       <div className="photo-list__user-details">
         <img

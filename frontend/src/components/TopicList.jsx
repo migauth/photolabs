@@ -4,7 +4,6 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
-  console.log("props.topicListData:", props.topicListData);
   const topics = props.topicListData.map((topic) => (
     <TopicListItem 
       label={topic.title}
