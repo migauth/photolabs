@@ -4,12 +4,12 @@ import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
   
-  const { heart, switchHeart, photos } = props;
+  const { hearts, switchHeart, photos } = props;
 
   const photoList = photos.map((photo, index) => (
     <PhotoListItem
-      heart={heart}
-      switchHeart={switchHeart}
+      heart={hearts[index]}
+      switchHeart={() => switchHeart(index)}
       photo={photo}
       key={index}
     />

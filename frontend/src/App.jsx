@@ -11,9 +11,13 @@ import "./App.scss";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [heart, setHeart] = useState("unlike");
-  const switchHeart = () => {
-    setHeart((prevHeart) => (prevHeart === "like" ? "unlike" : "like"));
+  const [hearts, setHearts] = useState(Array(photos.length).fill("unlike"));
+  const switchHeart = (index) => {
+    setHearts((prevHearts) => {
+      const newHearts = [...prevHearts];
+      newHearts[index] = newHearts[index] === "like" ? "unlike" : "like";
+      return newHearts;
+    });
   };
 
   // const topicListData = prepareTopcsData(sampleDataForTopicList);
@@ -22,7 +26,7 @@ const App = () => {
     <div className="App">
       <HomeRoute
         topicListData={topics}
-        heart={heart}
+        hearts={hearts}
         switchHeart={switchHeart}
         photos={photos}
       />
