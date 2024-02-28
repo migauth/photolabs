@@ -1,15 +1,9 @@
 import React from 'react';
 import TopicList from './TopicList';
-import sampleDataForTopicList from "data/sampleData"
-import PhotoFavButton from './PhotoFavButton';
-import '../styles/TopNavigationBar.scss'
-import FavIcon from './FavIcon';
 import FavBadge from './FavBadge';
-
-
+import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
-  console.log("props.topicListData:", props.topicListData);
 
   return (
     <div className="top-nav-bar">

@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import "./App.scss";
-import sampleDataForTopicList from "./data/sampleData";
 import HomeRoute from "./components/HomeRoute";
+import topics from "./mocks/topics"
+import photos from "mocks/photos";
+import "./App.scss";
 
 // const prepareTopcsData = (topicsData) => {
 //   return Object.values(topicsData);
@@ -20,9 +21,10 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        topicListData={sampleDataForTopicList}
+        topicListData={topics}
         heart={heart}
         switchHeart={switchHeart}
+        photos={photos}
       />
     </div>
   );
