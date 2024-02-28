@@ -3,8 +3,6 @@ import TopNavigation from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
 
 const HomeRoute = ({ topicListData, switchHeart, heart }) => {
-  console.log("topicListData:", topicListData);
-  console.log("switchHeart:", switchHeart);
   
   return (
     <div>
