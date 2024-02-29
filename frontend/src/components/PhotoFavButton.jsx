@@ -3,19 +3,21 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const { heart, switchHeart, addFavourite } = props;
+  const { favourite, switchHeart, toggleFavourite, photo} = props;
+
+  console.log(props);
 
   const handleClick = () => {
     switchHeart();
-    addFavourite(1);
-    console.log(heart);
+    toggleFavourite(photo.id);
+    console.log(favourite);
   }
 
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
-        {heart === 'unlike' && <FavIcon />}
-        {heart === 'like' && <FavIcon selected={heart}/>}
+        {favourite === 'unlike' && <FavIcon />}
+        {favourite === 'like' && <FavIcon selected={favourite}/>}
       </div>
     </div>
   );

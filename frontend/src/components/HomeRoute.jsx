@@ -4,10 +4,20 @@ import TopNavigation from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({ topicListData, switchHeart, hearts, photos }) => {
-  const [favouriteApp, dispatch] = useReducer((favouriteApp, amount) => {
-    return favouriteApp + amount;
-  }, 0);
+const HomeRoute = ({ topicListData, switchHeart, favourites, photos }) => {
+  const [favouriteApp, dispatch] = useReducer((favouriteApp, id) => {
+    const index = favouriteApp.indexOf(id);
+
+    if (index !== -1) {
+      // If photo ID exists, remove it
+      const newFavourites = [...favouriteApp];
+      newFavourites.splice(index, 1);
+      return newFavourites;
+    } else {
+      // If photo ID doesn't exist, add it
+      return [...favouriteApp, id];
+    }
+  }, []);
 
   console.log(favouriteApp);
 
@@ -15,10 +25,10 @@ const HomeRoute = ({ topicListData, switchHeart, hearts, photos }) => {
     <div className="home-route">
       <TopNavigation topicListData={topicListData} count={favouriteApp} />
       <PhotoList
-        hearts={hearts}
+        favourites={favourites}
         switchHeart={switchHeart}
         photos={photos}
-        addFavourite={dispatch}
+        toggleFavourite={dispatch}
       />
     </div>
   );

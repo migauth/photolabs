@@ -8,10 +8,10 @@ import "./App.scss";
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const [hearts, setHearts] = useState(Array(photos.length).fill("unlike"));
-  
+  const [favourites, setFavourites] = useState(Array(photos.length).fill("unlike"));
+
   const switchHeart = (index) => {
-    setHearts((prevHearts) => {
+    setFavourites((prevHearts) => {
       const newHearts = [...prevHearts];
       newHearts[index] = newHearts[index] === "like" ? "unlike" : "like";
       return newHearts;
@@ -22,7 +22,7 @@ const App = () => {
     <div className="App">
       <HomeRoute
         topicListData={topics}
-        hearts={hearts}
+        favourites={favourites}
         switchHeart={switchHeart}
         photos={photos}
       />
