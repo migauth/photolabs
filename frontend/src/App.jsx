@@ -15,7 +15,7 @@ const App = () => {
   const [view, setView] = useState("home");
 
   const [photoSelect, setPhotoSelect] = useState("");
-  console.log("homepage", photoSelect);
+  // console.log("homepage", photoSelect);
 
   const switchHeart = (index) => {
     setFavourites((prevHearts) => {

@@ -28,7 +28,10 @@ const PhotoDetailsModal = ({
       return [...favouriteArr, id];
     }
   }, []);
-  console.log(selectedPhoto);
+
+  console.log(photos);
+  console.log(selectedPhoto.similar_photos);
+
   return (
     <div className="photo-details-modal">
       <button
@@ -67,7 +70,7 @@ const PhotoDetailsModal = ({
         <PhotoList
           favourites={favourites}
           switchHeart={switchHeart}
-          photos={photos}
+          photos={Object.values(selectedPhoto.similar_photos)}
           photoSelectFunc={photoSelectFunc}
           changeView={changeView}
         />
