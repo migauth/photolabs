@@ -8,7 +8,7 @@ function PhotoFavButton(props) {
   const handleClick = () => {
     switchHeart();
     toggleFavourite(photo.id);
-    console.log(favourite);
+    // console.log(favourite);
   }
 
   return (
