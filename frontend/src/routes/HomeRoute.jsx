@@ -4,7 +4,7 @@ import TopNavigation from "../components/TopNavigationBar"
 import PhotoList from "../components/PhotoList";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({ topicListData, switchHeart, favourites, photos, view }) => {
+const HomeRoute = ({ topicListData, switchHeart, favourites, photos, changeView }) => {
   const [favouriteArr, dispatch] = useReducer((favouriteArr, id) => {
     const index = favouriteArr.indexOf(id);
 
@@ -19,7 +19,7 @@ const HomeRoute = ({ topicListData, switchHeart, favourites, photos, view }) => 
     }
   }, []);
 
-  // console.log(favouriteArr);
+  // console.log('change',changeView);
 
   return (
     <div className="home-route">
@@ -29,7 +29,7 @@ const HomeRoute = ({ topicListData, switchHeart, favourites, photos, view }) => 
         switchHeart={switchHeart}
         photos={photos}
         toggleFavourite={dispatch}
-        view={view}
+        changeView={changeView}
       />
     </div>
   );

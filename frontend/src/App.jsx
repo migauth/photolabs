@@ -30,7 +30,7 @@ const App = () => {
           favourites={favourites}
           switchHeart={switchHeart}
           photos={photos}
-          view={setView}
+          changeView={setView}
         />
       )}
       {view === "photoModal" && (
@@ -40,7 +40,7 @@ const App = () => {
             favourites={favourites}
             switchHeart={switchHeart}
             photos={photos}
-            view={setView}
+            changeView={setView}
           />
           
           <span>

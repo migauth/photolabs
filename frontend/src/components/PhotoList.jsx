@@ -4,7 +4,7 @@ import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
   
-  const { favourites, switchHeart, photos, toggleFavourite, view } = props;
+  const { favourites, switchHeart, photos, toggleFavourite, changeView } = props;
 
   const photoList = photos.map((photo, index) => (
     <PhotoListItem
@@ -13,7 +13,7 @@ const PhotoList = (props) => {
       photo={photo}
       toggleFavourite={toggleFavourite}
       key={index}
-      view={view}
+      changeView={changeView}
     />
   ));
 

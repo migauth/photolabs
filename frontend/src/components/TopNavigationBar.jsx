@@ -5,7 +5,7 @@ import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
 
-  console.log("count", props.count);
+  // console.log("count", props.count);
 
   return (
     <div className="top-nav-bar">
