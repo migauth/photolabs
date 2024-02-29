@@ -48,7 +48,7 @@ const App = () => {
           />
           
           <span>
-              <PhotoDetailsModal changeView={setView} photos={photos[photoSelect - 1]} />
+              <PhotoDetailsModal changeView={setView} selectedPhoto={photos[photoSelect - 1]} />
           </span>
         </div>
       )}
