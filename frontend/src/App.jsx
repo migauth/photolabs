@@ -14,8 +14,8 @@ const App = () => {
 
   const [view, setView] = useState("home");
 
-  const [photoSelect, setPhotoSelect] = useState('')
-  console.log('homepage', photoSelect);
+  const [photoSelect, setPhotoSelect] = useState("");
+  console.log("homepage", photoSelect);
 
   const switchHeart = (index) => {
     setFavourites((prevHearts) => {
@@ -46,9 +46,15 @@ const App = () => {
             photos={photos}
             changeView={setView}
           />
-          
           <span>
-              <PhotoDetailsModal changeView={setView} selectedPhoto={photos[photoSelect - 1]} />
+            <PhotoDetailsModal
+              changeView={setView}
+              selectedPhoto={photos[photoSelect - 1]}
+              favourites={favourites}
+              switchHeart={switchHeart}
+              photos={photos}
+              photoSelectFunc={setPhotoSelect}
+            />
           </span>
         </div>
       )}

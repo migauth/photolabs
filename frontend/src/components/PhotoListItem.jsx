@@ -4,9 +4,16 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
   /* Insert React */
-  const { favourite, switchHeart, toggleFavourite, photo, changeView, photoSelectFunc } = props;
+  const {
+    favourite,
+    switchHeart,
+    toggleFavourite,
+    photo,
+    changeView,
+    photoSelectFunc,
+  } = props;
 
-  // console.log(view);
+  // console.log('here',photo);
 
   return (
     <div className="photo-list__item">
@@ -21,8 +28,8 @@ const PhotoListItem = (props) => {
         src={props.photo.urls.full}
         alt=""
         onClick={() => {
-          changeView("photoModal")
-          photoSelectFunc(photo.id)
+          changeView("photoModal");
+          photoSelectFunc(photo.id);
           // console.log(photo.id);
         }}
       />
