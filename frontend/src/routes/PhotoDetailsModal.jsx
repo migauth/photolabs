@@ -1,9 +1,10 @@
 import React from 'react';
-
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
+import photos from 'mocks/photos';
 
-const PhotoDetailsModal = ({changeView}) => {
+const PhotoDetailsModal = ({changeView, photos}) => {
+  console.log(photos);
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => changeView('home')}>
