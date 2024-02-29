@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useReducer } from "react";
-import HomeRoute from "./components/HomeRoute";
+import HomeRoute from "./routes/HomeRoute";
 import topics from "./mocks/topics"
 import photos from "mocks/photos";
 import "./App.scss";

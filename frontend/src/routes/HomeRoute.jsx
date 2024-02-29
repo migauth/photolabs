@@ -1,11 +1,35 @@
-import React from 'react';
+import React from "react";
+import { useReducer } from "react";
+import TopNavigation from "../components/TopNavigationBar"
+import PhotoList from "../components/PhotoList";
+import "../styles/HomeRoute.scss";
 
-import '../styles/HomeRoute.scss';
+const HomeRoute = ({ topicListData, switchHeart, favourites, photos }) => {
+  const [favouriteArr, dispatch] = useReducer((favouriteArr, id) => {
+    const index = favouriteArr.indexOf(id);
 
-const HomeRoute = () => {
+    if (index !== -1) {
+      // If photo ID exists, remove it
+      const newFavourites = [...favouriteArr];
+      newFavourites.splice(index, 1);
+      return newFavourites;
+    } else {
+      // If photo ID doesn't exist, add it
+      return [...favouriteArr, id];
+    }
+  }, []);
+
+  console.log(favouriteArr);
+
   return (
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigation topicListData={topicListData} count={favouriteArr} />
+      <PhotoList
+        favourites={favourites}
+        switchHeart={switchHeart}
+        photos={photos}
+        toggleFavourite={dispatch}
+      />
     </div>
   );
 };

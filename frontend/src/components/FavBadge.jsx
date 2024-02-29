@@ -5,6 +5,10 @@ import '../styles/FavBadge.scss';
 
 const FavBadge = ({ isFavPhotoExist, count }) => {
 
+  
+
+  console.log(count === true);
+
   console.log(isFavPhotoExist);
   return (
     <div className='fav-badge'>
