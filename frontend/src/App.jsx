@@ -5,63 +5,64 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import topics from "./mocks/topics";
 import photos from "mocks/photos";
 import "./App.scss";
+import useApplicationData from "hooks/useApplicationData";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  // const {
-  //   state,
-  //   updateToFavPhotoIds,
-  //   setPhotoSelected,
-  //   onClosePhotoDetailsModal,
-  // } = useApplicationData();
+  const {
+    state,
+    updateToFavPhotoIds,
+    setPhotoSelected,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
   
-  const toggleFavourite = (id) => {
-    if (favourites.includes(id)) {
-      // If ID is already in favourites, remove it
-      setFavourites(favourites.filter((favId) => favId !== id));
-    } else {
-      // If ID is not in favourites, add it
-      setFavourites([...favourites, id]);
-    }
-  };
+  // const toggleFavourite = (id) => {
+  //   if (favourites.includes(id)) {
+  //     // If ID is already in favourites, remove it
+  //     setFavourites(favourites.filter((favId) => favId !== id));
+  //   } else {
+  //     // If ID is not in favourites, add it
+  //     setFavourites([...favourites, id]);
+  //   }
+  // };
 
-  const [favourites, setFavourites] = useState([]);
+  // const [favourites, setFavourites] = useState([]);
   
-  // For switching to modal view
-  const [view, setView] = useState("home");
+  // // For switching to modal view
+  // const [view, setView] = useState("home");
 
-  const [photoSelect, setPhotoSelect] = useState(0);
+  // const [photoSelect, setPhotoSelect] = useState(0);
 
   return (
     <div className="App">
-      {view === "home" && (
+      {state.view === "home" && (
         <HomeRoute
           topicListData={topics}
-          favourites={favourites}
-          toggleFavourite={toggleFavourite}
+          favourites={state.favourites}
+          toggleFavourite={updateToFavPhotoIds}
           photos={photos}
-          changeView={setView}
-          photoSelectFunc={setPhotoSelect}
+          changeView={setPhotoSelected}
+          photoSelectFunc={onClosePhotoDetailsModal}
         />
       )}
-      {view === "photoModal" && (
+      {state.view === "photoModal" && (
         <div className="App">
           <HomeRoute
             topicListData={topics}
-            favourites={favourites}
-            toggleFavourite={toggleFavourite}
+            favourites={state.favourites}
+            toggleFavourite={updateToFavPhotoIds}
             photos={photos}
-            changeView={setView}
+            changeView={setPhotoSelected}
           />
           <span>
             <PhotoDetailsModal
-              changeView={setView}
-              selectedPhoto={photos[photoSelect - 1]}
-              favourites={favourites}
-              toggleFavourite={toggleFavourite}
-              photos={photos}
-              photoSelectFunc={setPhotoSelect}
+              changeView={setPhotoSelected}
+              selectedPhoto={photos[state.photoSelect - 1]}
+              favourites={state.favourites}
+              toggleFavourite={updateToFavPhotoIds}
+              photos={state.photos}
+              photoSelectFunc={onClosePhotoDetailsModal}
             />
           </span>
         </div>

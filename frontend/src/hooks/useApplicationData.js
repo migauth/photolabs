@@ -6,7 +6,13 @@ export default function useApplicationData() {
   const [view, setView] = useState("home");
 
   const [photoSelect, setPhotoSelect] = useState(0);
-
+  
+  const state = {
+    favourites,
+    view,
+    photoSelect
+  };
+  
   const toggleFavourite = (id) => {
     if (favourites.includes(id)) {
       // If ID is already in favourites, remove it
@@ -16,6 +22,7 @@ export default function useApplicationData() {
       setFavourites([...favourites, id]);
     }
   };
+
 
   return {
     state,
