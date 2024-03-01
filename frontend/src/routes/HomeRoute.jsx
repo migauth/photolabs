@@ -19,7 +19,8 @@ const HomeRoute = ({ topicListData, switchHeart, favourites, photos, changeView,
     }
   }, []);
 
-  // console.log('change',changeView);
+  console.log('favourites',favourites);
+  console.log(favouriteArr);
 
   return (
     <div className="home-route">

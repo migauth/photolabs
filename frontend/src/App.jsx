@@ -12,11 +12,13 @@ const App = () => {
     Array(photos.length).fill("unlike")
   );
 
+  // For switching to modal view
   const [view, setView] = useState("home");
 
   const [photoSelect, setPhotoSelect] = useState("");
   // console.log("homepage", photoSelect);
 
+  // For favourite button
   const switchHeart = (index) => {
     setFavourites((prevHearts) => {
       const newHearts = [...prevHearts];

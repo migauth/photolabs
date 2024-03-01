@@ -2,19 +2,19 @@ import React from "react";
 import { useReducer } from "react";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
-import photos from "mocks/photos";
 import PhotoFavButton from "components/PhotoFavButton";
 import PhotoList from "components/PhotoList";
 
 const PhotoDetailsModal = ({
   changeView,
   selectedPhoto,
-  favourite,
   favourites,
   switchHeart,
   photoSelectFunc,
 }) => {
-  console.log("favoutite", favourite);
+  // console.log("favourite", favourite);
+  // console.log("favoutites modal", favourites);
+
   const [favouriteArr, dispatch] = useReducer((favouriteArr, id) => {
     const index = favouriteArr.indexOf(id);
 
@@ -29,8 +29,9 @@ const PhotoDetailsModal = ({
     }
   }, []);
 
-  console.log(photos);
-  console.log(selectedPhoto.similar_photos);
+  // console.log('favouriteArr', favouriteArr);
+  // console.log('selected photo', selectedPhoto);
+  console.log('here', favourites[selectedPhoto.id]);
 
   return (
     <div className="photo-details-modal">
@@ -42,7 +43,7 @@ const PhotoDetailsModal = ({
       </button>
       <div className="photo-details-modal__images">
         <PhotoFavButton
-          favourite={favourite}
+          favourite={favourites[selectedPhoto.id]}
           switchHeart={switchHeart}
           toggleFavourite={dispatch}
           photo={selectedPhoto}

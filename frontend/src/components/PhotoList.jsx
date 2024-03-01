@@ -6,8 +6,8 @@ const PhotoList = (props) => {
   
   const { favourites, switchHeart, photos, toggleFavourite, changeView, photoSelectFunc } = props;
 
-  // console.log('favorites', favourites);
-  console.log(photos);
+  console.log('favorites in photolist', favourites);
+  // console.log(photos);
 
   const photoList = photos.map((photo, index) => (
     <PhotoListItem

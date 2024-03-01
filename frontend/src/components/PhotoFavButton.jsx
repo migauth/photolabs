@@ -5,11 +5,11 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton(props) {
   const { favourite, switchHeart, toggleFavourite, photo} = props;
   
+  // console.log(favourite);
 
   const handleClick = () => {
     switchHeart();
     toggleFavourite(photo.id);
-    // console.log(favourite);
   }
 
   return (

@@ -14,6 +14,7 @@ const PhotoListItem = (props) => {
   } = props;
 
   // console.log('here',photo);
+  // console.log('favorite photolistitem', favourite);
 
   return (
     <div className="photo-list__item">
