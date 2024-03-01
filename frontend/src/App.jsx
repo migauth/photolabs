@@ -9,7 +9,12 @@ import "./App.scss";
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const [favourites, setFavourites] = useState([]);
+  // const {
+  //   state,
+  //   updateToFavPhotoIds,
+  //   setPhotoSelected,
+  //   onClosePhotoDetailsModal,
+  // } = useApplicationData();
   
   const toggleFavourite = (id) => {
     if (favourites.includes(id)) {
@@ -21,6 +26,8 @@ const App = () => {
     }
   };
 
+  const [favourites, setFavourites] = useState([]);
+  
   // For switching to modal view
   const [view, setView] = useState("home");
 
