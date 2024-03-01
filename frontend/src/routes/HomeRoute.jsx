@@ -4,32 +4,15 @@ import TopNavigation from "../components/TopNavigationBar"
 import PhotoList from "../components/PhotoList";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({ topicListData, switchHeart, favourites, photos, changeView, photoSelectFunc }) => {
-  const [favouriteArr, dispatch] = useReducer((favouriteArr, id) => {
-    const index = favouriteArr.indexOf(id);
-
-    if (index !== -1) {
-      // If photo ID exists, remove it
-      const newFavourites = [...favouriteArr];
-      newFavourites.splice(index, 1);
-      return newFavourites;
-    } else {
-      // If photo ID doesn't exist, add it
-      return [...favouriteArr, id];
-    }
-  }, []);
-
-  console.log('favourites',favourites);
-  console.log(favouriteArr);
+const HomeRoute = ({ topicListData, favourites, photos, changeView, photoSelectFunc, toggleFavourite }) => {
 
   return (
     <div className="home-route">
-      <TopNavigation topicListData={topicListData} count={favouriteArr} />
+      <TopNavigation topicListData={topicListData} count={favourites} />
       <PhotoList
         favourites={favourites}
-        switchHeart={switchHeart}
         photos={photos}
-        toggleFavourite={dispatch}
+        toggleFavourite={toggleFavourite}
         changeView={changeView}
         photoSelectFunc={photoSelectFunc}
       />

@@ -3,26 +3,19 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
-  /* Insert React */
   const {
-    favourite,
-    switchHeart,
+    isFavourite,
     toggleFavourite,
     photo,
     changeView,
     photoSelectFunc,
   } = props;
 
-  // console.log('here',photo);
-  // console.log('favorite photolistitem', favourite);
-
   return (
     <div className="photo-list__item">
       <PhotoFavButton
-        favourite={favourite}
-        switchHeart={switchHeart}
-        toggleFavourite={toggleFavourite}
-        photo={photo}
+        isFavourite={isFavourite}
+        toggleFavourite={() => toggleFavourite(photo.id)}
       />
       <img
         className="photo-list__image"
@@ -31,7 +24,7 @@ const PhotoListItem = (props) => {
         onClick={() => {
           changeView("photoModal");
           photoSelectFunc(photo.id);
-          // console.log(photo.id);
+        
         }}
       />
       <div className="photo-list__user-details">

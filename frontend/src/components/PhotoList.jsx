@@ -4,18 +4,17 @@ import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
   
-  const { favourites, switchHeart, photos, toggleFavourite, changeView, photoSelectFunc } = props;
+  const { favourites, photos, toggleFavourite, changeView, photoSelectFunc } = props;
 
-  console.log('favorites in photolist', favourites);
+  // console.log('favorites in photolist', favourites);
   // console.log(photos);
 
   const photoList = photos.map((photo, index) => (
     <PhotoListItem
-      favourite={favourites[index]}
-      switchHeart={() => switchHeart(index)}
+      isFavourite={favourites.find(pId => pId === photo.id)}
       photo={photo}
       toggleFavourite={toggleFavourite}
-      key={index}
+      key={photo.id}
       changeView={changeView}
       photoSelectFunc={photoSelectFunc}
     />

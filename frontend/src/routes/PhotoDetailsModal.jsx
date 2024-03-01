@@ -9,29 +9,9 @@ const PhotoDetailsModal = ({
   changeView,
   selectedPhoto,
   favourites,
-  switchHeart,
   photoSelectFunc,
+  toggleFavourite,
 }) => {
-  // console.log("favourite", favourite);
-  // console.log("favoutites modal", favourites);
-
-  const [favouriteArr, dispatch] = useReducer((favouriteArr, id) => {
-    const index = favouriteArr.indexOf(id);
-
-    if (index !== -1) {
-      // If photo ID exists, remove it
-      const newFavourites = [...favouriteArr];
-      newFavourites.splice(index, 1);
-      return newFavourites;
-    } else {
-      // If photo ID doesn't exist, add it
-      return [...favouriteArr, id];
-    }
-  }, []);
-
-  // console.log('favouriteArr', favouriteArr);
-  // console.log('selected photo', selectedPhoto);
-  console.log('here', favourites[selectedPhoto.id]);
 
   return (
     <div className="photo-details-modal">
@@ -43,10 +23,8 @@ const PhotoDetailsModal = ({
       </button>
       <div className="photo-details-modal__images">
         <PhotoFavButton
-          favourite={favourites[selectedPhoto.id]}
-          switchHeart={switchHeart}
-          toggleFavourite={dispatch}
-          photo={selectedPhoto}
+          isFavourite={favourites.find((pId) => pId === selectedPhoto.id)}
+          toggleFavourite={() => toggleFavourite(selectedPhoto.id)}
         />
         <img
           className="photo-details-modal__image"
@@ -60,19 +38,21 @@ const PhotoDetailsModal = ({
             src={selectedPhoto.user.profile}
             alt=""
           />
-          <div >
-            <p className="photo-details-modal__photographer-info">{selectedPhoto.user.name}</p>
+          <div>
+            <p className="photo-details-modal__photographer-info">
+              {selectedPhoto.user.name}
+            </p>
             <p className="photo-details-modal__photographer-location">
               {selectedPhoto.location.city}, {selectedPhoto.location.country}
             </p>
           </div>
         </div>
-        <h2 className="photo-details-modal__header" >Similar photos</h2>
+        <h2 className="photo-details-modal__header">Similar photos</h2>
         <PhotoList
           favourites={favourites}
-          switchHeart={switchHeart}
           photos={Object.values(selectedPhoto.similar_photos)}
           photoSelectFunc={photoSelectFunc}
+          toggleFavourite={toggleFavourite}
           changeView={changeView}
         />
       </div>

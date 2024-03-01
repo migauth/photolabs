@@ -8,24 +8,23 @@ import "./App.scss";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [favourites, setFavourites] = useState(
-    Array(photos.length).fill("unlike")
-  );
+
+  const [favourites, setFavourites] = useState([]);
+  
+  const toggleFavourite = (id) => {
+    if (favourites.includes(id)) {
+      // If ID is already in favourites, remove it
+      setFavourites(favourites.filter((favId) => favId !== id));
+    } else {
+      // If ID is not in favourites, add it
+      setFavourites([...favourites, id]);
+    }
+  };
 
   // For switching to modal view
   const [view, setView] = useState("home");
 
-  const [photoSelect, setPhotoSelect] = useState("");
-  // console.log("homepage", photoSelect);
-
-  // For favourite button
-  const switchHeart = (index) => {
-    setFavourites((prevHearts) => {
-      const newHearts = [...prevHearts];
-      newHearts[index] = newHearts[index] === "like" ? "unlike" : "like";
-      return newHearts;
-    });
-  };
+  const [photoSelect, setPhotoSelect] = useState(0);
 
   return (
     <div className="App">
@@ -33,7 +32,7 @@ const App = () => {
         <HomeRoute
           topicListData={topics}
           favourites={favourites}
-          switchHeart={switchHeart}
+          toggleFavourite={toggleFavourite}
           photos={photos}
           changeView={setView}
           photoSelectFunc={setPhotoSelect}
@@ -44,7 +43,7 @@ const App = () => {
           <HomeRoute
             topicListData={topics}
             favourites={favourites}
-            switchHeart={switchHeart}
+            toggleFavourite={toggleFavourite}
             photos={photos}
             changeView={setView}
           />
@@ -53,7 +52,7 @@ const App = () => {
               changeView={setView}
               selectedPhoto={photos[photoSelect - 1]}
               favourites={favourites}
-              switchHeart={switchHeart}
+              toggleFavourite={toggleFavourite}
               photos={photos}
               photoSelectFunc={setPhotoSelect}
             />
