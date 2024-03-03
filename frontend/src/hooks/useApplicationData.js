@@ -37,7 +37,7 @@ export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SET_VIEW: 'SET_VIEW',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
 }
@@ -61,10 +61,16 @@ function reducer(state, action) {
         photoSelect: action.payload.photo
       };
 
-    case ACTIONS.SET_TOPIC_DATA:
+    case ACTIONS.SET_VIEW:
       return {
         ...state,
-        setView: action.payload.view
+        view: 'photoModal'
+      }
+
+    case ACTIONS.SELECT_PHOTO:
+      return {
+        ...state,
+        photoSelect: action.payload.newPhotoSelect
       }
 
 
@@ -80,6 +86,7 @@ export default function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, {
     favourites: [],
     view: "home",
+    similarPhotos: [],
     photoSelect: 0
   });
 
@@ -94,7 +101,8 @@ export default function useApplicationData() {
   };
 
   const setView = (newView) => {
-    dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { newView } });
+    console.log(`Changing view to: ${newView}`);
+    dispatch({ type: ACTIONS.SET_VIEW, payload: { newView } });
   };
 
   const setPhotoSelect = (newPhotoSelect) => {
