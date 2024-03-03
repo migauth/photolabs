@@ -1,35 +1,3 @@
-// import { useState, useReducer } from "react";
-
-// export default function useApplicationData() {
-//   const [favourites, setFavourites] = useState([]);
-
-//   const [view, setView] = useState("home");
-
-//   const [photoSelect, setPhotoSelect] = useState(0);
-
-//   const toggleFavourite = (id) => {
-//     if (favourites.includes(id)) {
-//       // If ID is already in favourites, remove it
-//       setFavourites(favourites.filter((favId) => favId !== id));
-//     } else {
-//       // If ID is not in favourites, add it
-//       setFavourites([...favourites, id]);
-//     }
-//   };
-
-//   const state = {
-//   favourites,
-//   view,
-//   photoSelect
-// };
-
-//   return {
-//     state,
-//     setView,
-//     toggleFavourite,
-//     setPhotoSelect,
-//   };
-// }
 
 import { useReducer } from "react";
 
@@ -64,7 +32,7 @@ function reducer(state, action) {
     case ACTIONS.SET_VIEW:
       return {
         ...state,
-        view: 'photoModal'
+        view: action.payload.newView
       }
 
     case ACTIONS.SELECT_PHOTO:
@@ -72,7 +40,6 @@ function reducer(state, action) {
         ...state,
         photoSelect: action.payload.newPhotoSelect
       }
-
 
     // Handle other action types similarly
     default:
