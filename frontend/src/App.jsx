@@ -12,10 +12,11 @@ const App = () => {
 
   const {
     state,
-    updateToFavPhotoIds,
-    setPhotoSelected,
-    onClosePhotoDetailsModal,
+    toggleFavourite,
+    setView,
+    setPhotoSelect,
   } = useApplicationData();
+  
   
   return (
     <div className="App">
@@ -23,10 +24,10 @@ const App = () => {
         <HomeRoute
           topicListData={topics}
           favourites={state.favourites}
-          toggleFavourite={updateToFavPhotoIds}
+          toggleFavourite={toggleFavourite}
           photos={photos}
-          changeView={setPhotoSelected}
-          photoSelectFunc={onClosePhotoDetailsModal}
+          changeView={setView}
+          photoSelectFunc={setPhotoSelect}
         />
       )}
       {state.view === "photoModal" && (
@@ -34,18 +35,18 @@ const App = () => {
           <HomeRoute
             topicListData={topics}
             favourites={state.favourites}
-            toggleFavourite={updateToFavPhotoIds}
+            toggleFavourite={toggleFavourite}
             photos={photos}
-            changeView={setPhotoSelected}
+            changeView={setView}
           />
           <span>
             <PhotoDetailsModal
-              changeView={setPhotoSelected}
+              changeView={setView}
               selectedPhoto={photos[state.photoSelect - 1]}
               favourites={state.favourites}
-              toggleFavourite={updateToFavPhotoIds}
+              toggleFavourite={toggleFavourite}
               photos={state.photos}
-              photoSelectFunc={onClosePhotoDetailsModal}
+              photoSelectFunc={setPhotoSelect}
             />
           </span>
         </div>
