@@ -8,9 +8,15 @@ A single page application that allows users to view and favourite photos. Built 
 
 Home view
 
+!["Home view"](https://github.com/migauth/photolabs/blob/main/docs/home-view.png?raw=true)
+
 Modal view
 
+!["Modal view"](https://github.com/migauth/photolabs/blob/main/docs/modal-view.png?raw=true)
+
 Similar photos in modal view
+
+!["Similar photos in modal view"](https://github.com/migauth/photolabs/blob/main/docs/similar-photos.png?raw=true)
 
 ## Setup
 
