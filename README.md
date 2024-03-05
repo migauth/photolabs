@@ -1,7 +1,16 @@
-# react-photolabs
-The PhotoLabs project for the Web Development React course programming.
-
 # Photolabs
+
+## Desciption
+
+A single page application that allows users to view and favourite photos. Built with React.
+
+## Screenshots:
+
+Home view
+
+Modal view
+
+Similar photos in modal view
 
 ## Setup
 
