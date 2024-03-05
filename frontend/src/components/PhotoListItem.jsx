@@ -19,7 +19,6 @@ const PhotoListItem = (props) => {
         onClick={() => {
           changeView("photoModal");
           photoSelectFunc(photo.id);
-          console.log("photoId", photo.id);
         }}
       />
       <div className="photo-list__user-details">

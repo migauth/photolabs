@@ -17,7 +17,7 @@ const HomeRoute = ({
     <div className="home-route">
       <TopNavigation
         topicListData={topicListData}
-        isFavPhotoExist={favourites > 0}
+        isFavPhotoExist={favourites.length > 0}
         fetchPhotosByTopic={fetchPhotosByTopic}
       />
       <PhotoList
