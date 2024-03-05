@@ -1,11 +1,8 @@
 import React from "react";
-import { useState, useReducer, useEffect } from "react";
 import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-import topics from "./mocks/topics";
-// import photos from "mocks/photos";
-import "./App.scss";
 import useApplicationData from "hooks/useApplicationData";
+import "./App.scss";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
@@ -17,6 +14,7 @@ const App = () => {
     setPhotoSelect,
   } = useApplicationData();
 
+  console.log("This is the photo object I'm sending through selectPhoto:", state.photoData[state.photoSelect]);
   console.log("Selected Photo Index:", state.photoSelect);
   console.log("All Photos Data:", state.photoData);
   
@@ -44,7 +42,7 @@ const App = () => {
           <span>
             <PhotoDetailsModal
               changeView={setView}
-              selectedPhoto={state.photoData[state.photoSelect]}
+              selectedPhoto={state.photoData.find((object) => object.id === state.photoSelect)}
               favourites={state.favourites}
               toggleFavourite={toggleFavourite}
               photos={state.photoData}

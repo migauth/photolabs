@@ -12,7 +12,7 @@ const PhotoDetailsModal = ({
   photoSelectFunc,
   toggleFavourite,
 }) => {
-
+  console.log('selecedPhoto',selectedPhoto);
   return (
     <div className="photo-details-modal">
       <button

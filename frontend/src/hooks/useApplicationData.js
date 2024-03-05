@@ -89,6 +89,7 @@ export default function useApplicationData() {
   };
 
   const setPhotoSelect = (newPhotoSelect) => {
+    console.log('newPhotoSelect',newPhotoSelect);
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { newPhotoSelect } });
   };
 
