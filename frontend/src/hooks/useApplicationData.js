@@ -7,7 +7,7 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SET_VIEW: 'SET_VIEW',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
 }
 
 function reducer(state, action) {
@@ -54,6 +54,7 @@ const initialState = {
   view: "home",
   similarPhotos: [],
   photoSelect: null,
+  selectedTopic: null,
   photoData: [],
   topicData: []
 };
@@ -72,7 +73,24 @@ export default function useApplicationData() {
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
   }, []);
-  
+
+
+  const fetchPhotosByTopic = (topicId) => {
+    // Connected to front end
+    // Get the id of the topic
+    // I need to send the id of the nav to the api url
+    // 
+
+    if (topicId) {
+      fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+        .then((response) => response.json())
+        .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+        .catch((error) => console.error("Error fetching photos by topic:", error));
+    }
+    console.log('it works!');
+    console.log('selected topic id:', topicId);
+  };
+
 
   const toggleFavourite = (id) => {
     if (state.favourites.includes(id)) {
@@ -98,5 +116,6 @@ export default function useApplicationData() {
     toggleFavourite,
     setView,
     setPhotoSelect,
+    fetchPhotosByTopic 
   };
 }

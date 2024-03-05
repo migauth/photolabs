@@ -4,9 +4,14 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
-  const topics = props.topicListData.map((topic) => (
+  const { topicListData, fetchPhotosByTopic } = props;
+  console.log('topiclistdata',topicListData);
+
+  const topics = topicListData.map((topic) => (
     <TopicListItem 
       label={topic.title}
+      fetchPhotosByTopic={fetchPhotosByTopic}
+      id={topic.id}
       key={topic.id}
       />
   ));

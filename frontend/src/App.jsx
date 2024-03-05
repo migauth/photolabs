@@ -12,22 +12,23 @@ const App = () => {
     toggleFavourite,
     setView,
     setPhotoSelect,
+    fetchPhotosByTopic
   } = useApplicationData();
 
-  console.log("This is the photo object I'm sending through selectPhoto:", state.photoData[state.photoSelect]);
-  console.log("Selected Photo Index:", state.photoSelect);
-  console.log("All Photos Data:", state.photoData);
+  console.log('selectedTopic in app',state.selectedTopic);
+
   
   return (
     <div className="App">
       {state.view === "home" && (
         <HomeRoute
           topicListData={state.topicData}
+          photos={state.photoData}
           favourites={state.favourites}
           toggleFavourite={toggleFavourite}
-          photos={state.photoData}
           changeView={setView}
           photoSelectFunc={setPhotoSelect}
+          fetchPhotosByTopic={fetchPhotosByTopic}
         />
       )}
       {state.view === "photoModal" && (
