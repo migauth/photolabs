@@ -4,15 +4,15 @@ import FavBadge from "./FavBadge";
 import "../styles/TopNavigationBar.scss";
 
 const TopNavigation = (props) => {
-  const { topicListData, count, fetchPhotosByTopic } = props;
+  const { topicListData, fetchPhotosByTopic, isFavPhotoExist } = props;
 
-  // console.log("count", props.count);
+  console.log('fav photo?',isFavPhotoExist);
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList topicListData={topicListData} fetchPhotosByTopic={fetchPhotosByTopic} />
-      <FavBadge count={count} />
+      <FavBadge isFavPhotoExist={isFavPhotoExist} />
     </div>
   );
 };

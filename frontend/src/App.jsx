@@ -4,7 +4,8 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
 import "./App.scss";
 
-// Note: Rendering a single component to build components in isolation
+// Main app component
+
 const App = () => {
 
   const {
@@ -15,9 +16,6 @@ const App = () => {
     fetchPhotosByTopic
   } = useApplicationData();
 
-  console.log('selectedTopic in app',state.selectedTopic);
-
-  
   return (
     <div className="App">
       {state.view === "home" && (

@@ -1,9 +1,8 @@
 import React from "react";
-import { useReducer } from "react";
-import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoFavButton from "components/PhotoFavButton";
 import PhotoList from "components/PhotoList";
+import "../styles/PhotoDetailsModal.scss";
 
 const PhotoDetailsModal = ({
   changeView,
@@ -12,7 +11,7 @@ const PhotoDetailsModal = ({
   photoSelectFunc,
   toggleFavourite,
 }) => {
-  console.log('selecedPhoto',selectedPhoto);
+  
   return (
     <div className="photo-details-modal">
       <button
