@@ -4,8 +4,6 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
 import "./App.scss";
 
-// Main app component
-
 const App = () => {
 
   const {

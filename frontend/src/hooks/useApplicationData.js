@@ -64,6 +64,7 @@ const initialState = {
 export default function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Fetch photos from api
   useEffect(() => {
     fetch("http://localhost:8001/api/photos")
       .then((response) => response.json())
@@ -72,6 +73,7 @@ export default function useApplicationData() {
       );
   }, []);
 
+  // Fetch topic data from api
   useEffect(() => {
     fetch("http://localhost:8001/api/topics")
       .then((response) => response.json())
@@ -80,6 +82,7 @@ export default function useApplicationData() {
       );
   }, []);
 
+  // Function for fetching photos when clicking on topic
   const fetchPhotosByTopic = (topicId) => {
     if (topicId) {
       fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
@@ -93,6 +96,7 @@ export default function useApplicationData() {
     }
   };
 
+  // For adding and removing favourites
   const toggleFavourite = (id) => {
     if (state.favourites.includes(id)) {
       // If ID is already in favourites, remove it
@@ -103,6 +107,7 @@ export default function useApplicationData() {
     }
   };
 
+  // Change from home view to modal view
   const setView = (newView) => {
     dispatch({ type: ACTIONS.SET_VIEW, payload: { newView } });
   };
