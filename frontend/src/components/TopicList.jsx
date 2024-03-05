@@ -1,27 +1,20 @@
 import React from "react";
-
-import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
+import "../styles/TopicList.scss";
 
 const TopicList = (props) => {
   const { topicListData, fetchPhotosByTopic } = props;
-  console.log('topiclistdata',topicListData);
 
   const topics = topicListData.map((topic) => (
-    <TopicListItem 
+    <TopicListItem
       label={topic.title}
       fetchPhotosByTopic={fetchPhotosByTopic}
       id={topic.id}
       key={topic.id}
-      />
+    />
   ));
 
-  return (
-    <div className="top-nav-bar__topic-list">
-      {/* Insert React */}
-      {topics}
-    </div>
-  );
+  return <div className="top-nav-bar__topic-list">{topics}</div>;
 };
 
 export default TopicList;

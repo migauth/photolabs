@@ -1,47 +1,49 @@
 import { useReducer, useEffect } from "react";
 
 export const ACTIONS = {
-  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
-  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
-  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  SET_VIEW: 'SET_VIEW',
-  SELECT_PHOTO: 'SELECT_PHOTO',
-  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
-}
+  FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
+  FAV_PHOTO_REMOVED: "FAV_PHOTO_REMOVED",
+  SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  SET_TOPIC_DATA: "SET_TOPIC_DATA",
+  SET_VIEW: "SET_VIEW",
+  SELECT_PHOTO: "SELECT_PHOTO",
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
+};
 
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
       return {
         ...state,
-        favourites: [...state.favourites, action.payload.id]
+        favourites: [...state.favourites, action.payload.id],
       };
     case ACTIONS.FAV_PHOTO_REMOVED:
       return {
         ...state,
-        favourites: state.favourites.filter((favId) => favId !== action.payload.id)
+        favourites: state.favourites.filter(
+          (favId) => favId !== action.payload.id
+        ),
       };
     case ACTIONS.SET_PHOTO_DATA:
       return {
         ...state,
-        photoData: action.payload
+        photoData: action.payload,
       };
     case ACTIONS.SET_TOPIC_DATA:
       return {
         ...state,
-        topicData: action.payload
+        topicData: action.payload,
       };
     case ACTIONS.SET_VIEW:
       return {
         ...state,
-        view: action.payload.newView
-      }
+        view: action.payload.newView,
+      };
     case ACTIONS.SELECT_PHOTO:
       return {
         ...state,
-        photoSelect: action.payload.newPhotoSelect
-      }  
+        photoSelect: action.payload.newPhotoSelect,
+      };
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -56,7 +58,7 @@ const initialState = {
   photoSelect: null,
   selectedTopic: null,
   photoData: [],
-  topicData: []
+  topicData: [],
 };
 
 export default function useApplicationData() {
@@ -65,32 +67,31 @@ export default function useApplicationData() {
   useEffect(() => {
     fetch("http://localhost:8001/api/photos")
       .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+      );
   }, []);
 
   useEffect(() => {
     fetch("http://localhost:8001/api/topics")
       .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
+      );
   }, []);
 
-
   const fetchPhotosByTopic = (topicId) => {
-    // Connected to front end
-    // Get the id of the topic
-    // I need to send the id of the nav to the api url
-    // 
-
     if (topicId) {
       fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
         .then((response) => response.json())
-        .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
-        .catch((error) => console.error("Error fetching photos by topic:", error));
+        .then((data) =>
+          dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+        )
+        .catch((error) =>
+          console.error("Error fetching photos by topic:", error)
+        );
     }
-    console.log('it works!');
-    console.log('selected topic id:', topicId);
   };
-
 
   const toggleFavourite = (id) => {
     if (state.favourites.includes(id)) {
@@ -107,7 +108,7 @@ export default function useApplicationData() {
   };
 
   const setPhotoSelect = (newPhotoSelect) => {
-    console.log('newPhotoSelect',newPhotoSelect);
+    console.log("newPhotoSelect", newPhotoSelect);
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { newPhotoSelect } });
   };
 
@@ -116,6 +117,6 @@ export default function useApplicationData() {
     toggleFavourite,
     setView,
     setPhotoSelect,
-    fetchPhotosByTopic 
+    fetchPhotosByTopic,
   };
 }

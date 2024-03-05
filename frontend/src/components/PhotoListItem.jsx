@@ -3,13 +3,8 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
-  const {
-    isFavourite,
-    toggleFavourite,
-    photo,
-    changeView,
-    photoSelectFunc,
-  } = props;
+  const { isFavourite, toggleFavourite, photo, changeView, photoSelectFunc } =
+    props;
 
   return (
     <div className="photo-list__item">
@@ -24,7 +19,7 @@ const PhotoListItem = (props) => {
         onClick={() => {
           changeView("photoModal");
           photoSelectFunc(photo.id);
-          console.log('photoId',photo.id);
+          console.log("photoId", photo.id);
         }}
       />
       <div className="photo-list__user-details">
